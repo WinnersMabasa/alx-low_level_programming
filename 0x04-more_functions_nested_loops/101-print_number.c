@@ -1,4 +1,7 @@
 #include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+
 void print_integer(int m);
 
 /**
@@ -34,4 +37,3 @@ void print_integer(int m)
 			_putchar((m / i) % 10 + '0');
 		}
 }
-
