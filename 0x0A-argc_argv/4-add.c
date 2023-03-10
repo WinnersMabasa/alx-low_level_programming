@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <string.h>
+#include "main.h"
 
 /**
  * main - A program that adds positive numbers
@@ -8,23 +10,34 @@
  * @argv: The argument's values
  * Return: Always 0 (Success)
  */
-int main(int argc, char **argv)
+int _add(int argc, char *argv[])
 {
-	int num, result = 0, i;
+	int i, j, length, sum;
+	char *ptr;
 
-	while (argc-- > 1)
+	if (argc < 2)
+		printf("0\n");
+	else
 	{
-		for (i = 0; argv[argc][i]; i++)
+		sum = 0;
+		for (i = 1; i < argc; i++)
 		{
-			if (!(isdigit(argv[argc][i])))
+			ptr = argv[i];
+			length = strlen(ptr);
+
+			for (j = 0; j < length; j++)
 			{
-				printf("Error\n");
-				return (1);
+				if (isdigit(*(ptr + j)) == 0)
+				{
+					printf("Error\n");
+					return (1);
+				}
 			}
+
+			sum += atoi(argv[i]);
 		}
-		num = atoi(argv[argc]);
-		result += num;
+
+	printf("%d\n", sum);
 	}
-	printf("%d\n", result);
 	return (0);
 }
